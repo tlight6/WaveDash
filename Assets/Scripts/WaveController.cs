@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class WaveController : MonoBehaviour {
@@ -89,11 +90,14 @@ public class WaveController : MonoBehaviour {
             {
                 healthMeter.sprite = health1;
                 StartCoroutine(Flasher());
+                StartCoroutine(BuildSpeed());
             }
             else if (health == 0)
             {
+                speed = 0;
+                shifting = true;
                 healthMeter.sprite = health0;
-                StartCoroutine(Flasher());
+                StartCoroutine(FlasherGameOver());
             }
         }
     }
@@ -109,6 +113,21 @@ public class WaveController : MonoBehaviour {
             yield return new WaitForSeconds(.12f);
         }
         invincible = false;
+    }
+
+    IEnumerator FlasherGameOver()
+    {
+        invincible = true;
+        for (int i = 0; i < 5; i++)
+        {
+            GetComponent<Renderer>().material = hurtMaterial;
+            yield return new WaitForSeconds(.11f);
+            GetComponent<Renderer>().material = normalMaterial;
+            yield return new WaitForSeconds(.11f);
+        }
+        GetComponent<Renderer>().material = hurtMaterial;
+        yield return new WaitForSeconds(.11f);
+        SceneManager.LoadScene("GameOverMenu");
     }
 
     IEnumerator BuildSpeed()

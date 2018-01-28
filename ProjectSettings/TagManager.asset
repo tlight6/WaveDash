@@ -8,6 +8,7 @@ TagManager:
   - Token
   - Negative Token
   - Health Icon
+  - Main Menu Element
   layers:
   - Default
   - TransparentFX

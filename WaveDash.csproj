@@ -282,10 +282,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\HealthIconController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\CreditsMenuController.cs" />
+    <Compile Include="Assets\Scripts\GameOverMenuController.cs" />
+    <Compile Include="Assets\Scripts\HealthIconController.cs" />
+    <Compile Include="Assets\Scripts\InstructionsMenuController.cs" />
+    <Compile Include="Assets\Scripts\MenuScreenController.cs" />
+    <Compile Include="Assets\Scripts\TokenScript.cs" />
+    <Compile Include="Assets\Scripts\Touchable.cs" />
     <Compile Include="Assets\Scripts\WaveController.cs" />
-    <Compile Include="Assets\TokenScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
