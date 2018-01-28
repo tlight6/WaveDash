@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class WaveController : MonoBehaviour {
 
     public int speed = 1;
     public float transitionSpeed = 3.0f;
     public float amplitude = 0.5f;
     public float frequency = 0.5f;
+    public AudioSource soundSource;
 
     private int playerRoad = 2;
     private bool leftHeld = false;
@@ -19,6 +21,7 @@ public class WaveController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        soundSource = gameObject.GetComponent<AudioSource>();
         offset = transform.position;
     }
 	
@@ -50,6 +53,15 @@ public class WaveController : MonoBehaviour {
         }
         leftHeld = (Input.GetAxis("Horizontal") < 0);
         rightHeld = (Input.GetAxis("Horizontal") > 0);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Token !"))
+        {
+            other.gameObject.SetActive(false);
+            soundSource.Play();
+        }
     }
 
     /*void MoveLeft()
