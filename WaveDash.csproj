@@ -282,6 +282,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EndingController.cs" />
+    <Compile Include="Assets\MusicPlayer.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CreditsMenuController.cs" />
     <Compile Include="Assets\Scripts\GameOverMenuController.cs" />

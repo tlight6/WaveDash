@@ -35,6 +35,7 @@ public class WaveController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         soundSource = gameObject.GetComponents<AudioSource>();
+        soundSource[2].Play();
         offset = transform.position;
         totalTokens = GameObject.FindGameObjectsWithTag("Token").Length;
         scoreText.text = "Score: " + score.ToString() + "/" + totalTokens.ToString();

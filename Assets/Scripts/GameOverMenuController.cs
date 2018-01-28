@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameOverMenuController : MonoBehaviour {
+
+    public AudioSource soundSource;
+
+    private void Start()
+    {
+        soundSource = gameObject.GetComponent<AudioSource>();
+        soundSource.Play();
+    }
 
     public void StartGame()
     {
