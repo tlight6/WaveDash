@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class WaveController : MonoBehaviour {
@@ -10,6 +11,11 @@ public class WaveController : MonoBehaviour {
     public float amplitude = 0.5f;
     public float frequency = 0.5f;
     public AudioSource soundSource;
+    public Sprite health3;
+    public Sprite health2;
+    public Sprite health1;
+    public Sprite health0;
+    public int health = 3;
 
     private int playerRoad = 2;
     private bool leftHeld = false;
@@ -18,6 +24,11 @@ public class WaveController : MonoBehaviour {
     private bool shiftingRight = false;
     private float changeStartingTime;
     private Vector3 offset = new Vector3();
+    private GameObject oldHealth;
+    private GameObject newHealth;
+    private Image oldHealthImage;
+    private Image newHealthImage;
+    private Image healthMeter;
 
     // Use this for initialization
     void Start () {
@@ -57,10 +68,27 @@ public class WaveController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Token !"))
+        if (other.gameObject.CompareTag("Token"))
         {
             other.gameObject.SetActive(false);
             soundSource.Play();
+        }
+        else if (other.gameObject.CompareTag("Negative Token") && health >= 1)
+        {
+            other.gameObject.SetActive(false);
+            health--;
+            if (health == 2)
+            {
+                GameObject.FindGameObjectWithTag("Health Icon").GetComponent<SpriteRenderer>().sprite = health2;
+            }
+            else if (health == 1)
+            {
+                GameObject.FindGameObjectWithTag("Health Icon").GetComponent<SpriteRenderer>().sprite = health1;
+            }
+            else if (health == 0)
+            {
+                GameObject.FindGameObjectWithTag("Health Icon").GetComponent<SpriteRenderer>().sprite = health0;
+            }
         }
     }
 

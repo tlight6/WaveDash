@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - token_!
   - Token !
+  - Token
+  - Negative Token
+  - Health Icon
   layers:
   - Default
   - TransparentFX
